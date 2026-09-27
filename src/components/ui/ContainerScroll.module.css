@@ -1,0 +1,61 @@
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60rem;
+  padding: 5rem clamp(1.25rem, 5vw, 4rem);
+}
+
+.scene {
+  position: relative;
+  width: 100%;
+  max-width: 1152px;
+  padding-block: 2.5rem;
+}
+
+.header {
+  margin: 0 auto 2.25rem;
+  text-align: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  margin-inline: auto;
+  padding: 8px;
+  border: 4px solid #6c6c6c;
+  border-radius: 30px;
+  background: #222222;
+  box-shadow:
+    0 0 #0000004d,
+    0 9px 20px #0000004a,
+    0 37px 37px #00000042,
+    0 84px 50px #00000026,
+    0 149px 60px #0000000a,
+    0 233px 65px #00000003;
+}
+
+.viewport {
+  position: relative;
+  flex: none;
+  min-height: 0;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #f3f4f6;
+}
+
+.preview { width: 100%; }
+
+@media (min-width: 768px) {
+  .container { height: 80rem; }
+  .scene { padding-block: 10rem; }
+  .card { padding: 24px; }
+}
+
+@media (prefers-color-scheme: dark) {
+  .viewport { background: #18181b; }
+}

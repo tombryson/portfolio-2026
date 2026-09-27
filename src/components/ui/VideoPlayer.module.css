@@ -1,0 +1,57 @@
+.facade {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  appearance: none;
+  background: none;
+  line-height: 0;
+  cursor: pointer;
+}
+
+.poster,
+.video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.video { background: #000; }
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge {
+  width: clamp(52px, 5.5vw, 72px);
+  height: clamp(52px, 5.5vw, 72px);
+  overflow: visible;
+  transition: transform 160ms ease;
+}
+
+/* The disc. The arrow is a hole in it, not a shape drawn on top, so the
+   screenshot behind stays fully opaque through the cut-out. */
+.disc {
+  fill: rgb(120 120 120 / 0.5);
+  transition: fill 160ms ease;
+}
+
+.ring {
+  fill: none;
+  stroke: rgb(255 255 255 / 0.3);
+  stroke-width: 1;
+}
+
+.facade:hover .disc { fill: rgb(120 120 120 / 0.66); }
+.facade:hover .badge { transform: scale(1.04); }
+.facade:active .badge { transform: scale(0.98); }
+
+@media (prefers-reduced-motion: reduce) {
+  .badge, .disc { transition: none; }
+  .facade:hover .badge { transform: none; }
+}

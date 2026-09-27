@@ -1,0 +1,10 @@
+.grain {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: url("/textures/photo-grain.svg") repeat;
+  background-size: 128px 128px;
+  mix-blend-mode: soft-light;
+  opacity: 0.2;
+}

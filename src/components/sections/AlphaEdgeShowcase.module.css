@@ -1,0 +1,54 @@
+.section {
+  width: 100%;
+  overflow: hidden;
+}
+
+.heading { text-align: center; }
+
+.label {
+  display: inline-block;
+  margin-bottom: 1.4rem;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid var(--color-ink);
+  border-radius: 2px;
+  background: var(--color-yellow);
+  color: var(--color-ink);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.75rem;
+  transform: rotate(-2deg);
+}
+
+.title {
+  margin-bottom: 1rem;
+  color: var(--color-ink);
+  font-family: var(--font-space), sans-serif;
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.055em;
+}
+
+.description {
+  max-width: 30rem;
+  margin: 0 auto 1.25rem;
+  color: var(--color-muted);
+  font-size: 1rem;
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+
+.stack {
+  max-width: 34rem;
+  margin-inline: auto;
+  color: var(--color-muted);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.7rem;
+  line-height: 1.8;
+  text-wrap: balance;
+}
+
+.screenshot {
+  display: block;
+  width: 100%;
+  height: auto;
+}

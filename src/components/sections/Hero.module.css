@@ -1,0 +1,223 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 27rem) minmax(0, min(36vw, 30rem));
+  align-items: center;
+  justify-content: center;
+  gap: clamp(2rem, 3.3vw, 3rem);
+  max-width: 1080px;
+  /* Include the hero's bottom border within the full viewport height. */
+  min-height: calc(100dvh - 1px);
+  margin-inline: auto;
+  padding: 9rem clamp(3rem, 3vw, 4rem) 5rem;
+}
+
+.copy { min-width: 0; }
+
+.name {
+  width: fit-content;
+  margin-bottom: 2rem;
+  font-family: var(--font-space), sans-serif;
+  font-size: clamp(5rem, 9.3vw, 8rem);
+  font-weight: 700;
+  letter-spacing: -0.065em;
+  line-height: 0.91;
+}
+
+.firstName {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 0.1em;
+}
+
+.bolt {
+  position: relative;
+  display: inline-block;
+  flex: none;
+  width: clamp(4rem, 7.5vw, 6rem);
+  height: clamp(5rem, 9vw, 7.5rem);
+  transform: rotate(13deg);
+}
+
+.boltImage { object-fit: contain; }
+
+.surname {
+  position: relative;
+  isolation: isolate;
+  display: block;
+}
+
+.surname::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -1%;
+  right: -1%;
+  bottom: -0.025em;
+  height: 0.16em;
+  background: var(--color-yellow);
+  transform: rotate(-1deg);
+}
+
+.role {
+  margin-bottom: 0.65rem;
+  font-size: clamp(0.95rem, 1.55vw, 1.1rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.intro {
+  max-width: 26rem;
+  color: var(--color-muted);
+  font-size: 1rem;
+  line-height: 1.8;
+  text-wrap: pretty;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.75rem;
+  margin-top: 1.75rem;
+}
+
+.workButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: 48px;
+  padding: 0.75rem 1.15rem;
+  border: 1.5px solid var(--color-ink);
+  border-radius: 4px;
+  background: var(--color-yellow);
+  box-shadow: 3px 3px 0 var(--color-ink);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.workButton:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--color-ink);
+}
+
+.workButton:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--color-ink);
+}
+
+.portraitSlot {
+  position: relative;
+  width: 98%;
+  max-width: calc(460px * 0.98);
+  justify-self: end;
+}
+
+.portrait {
+  --portrait-rotation: 3deg;
+  --card-radius: 54px;
+  --card-border-width: 8px;
+  --card-padding: 0px;
+  --card-bottom-extra: 0px;
+  --card-bottom-radius: calc(var(--card-radius) + var(--card-bottom-extra));
+  position: relative;
+  width: 100%;
+  padding: var(--card-padding);
+  padding-bottom: calc(var(--card-padding) + var(--card-bottom-extra));
+  border: var(--card-border-width) solid var(--color-ink);
+  border-radius: var(--card-radius) / var(--card-radius) var(--card-radius) var(--card-bottom-radius) var(--card-bottom-radius);
+  background: #fffef8;
+  box-shadow:
+    0 2px 0 #b7b7b0,
+    0 4px 7px #20202029,
+    6px 20px 36px #20202033;
+  transform: rotate(var(--portrait-rotation));
+}
+
+.photo {
+  position: relative;
+  isolation: isolate;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border: 0;
+  border-radius: max(0px, calc(var(--card-radius) - var(--card-border-width) - var(--card-padding)));
+  background: #e6e6e2;
+}
+
+.portraitImage {
+  object-fit: cover;
+  object-position: 55% 15%;
+}
+
+.photo::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  inset: auto 0 0;
+  height: 18%;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(255, 254, 248, 0), rgba(255, 254, 248, 0.35));
+}
+
+@media (min-width: 761px) {
+  .inner {
+    /* Tighten vertical spacing on shorter windows without clipping the card. */
+    padding-top: clamp(6.5rem, 50svh - 16rem, 6rem);
+    padding-bottom: clamp(2rem, calc(50svh - 20rem), 5rem);
+  }
+}
+
+@media (max-width: 760px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    padding-top: 7.5rem;
+    padding-bottom: 3.5rem;
+  }
+  .copy { text-align: center; }
+  .name {
+    margin-inline: auto;
+    font-size: clamp(4.5rem, 16vw, 7rem);
+  }
+  .firstName { justify-content: center; }
+  .intro { margin-inline: auto; }
+  .actions { justify-content: center; }
+  .bolt { width: 4rem; height: 5.5rem; }
+  .portraitSlot {
+    max-width: calc(380px * 0.98);
+    justify-self: center;
+  }
+  .portrait { --portrait-rotation: 2deg; }
+  .photo { aspect-ratio: 1 / 1.08; }
+}
+
+@media (max-width: 360px) {
+  .name { font-size: clamp(3.875rem, calc(25vw - 1.125rem), 4.5rem); }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .portrait {
+    transform:
+      perspective(1000px)
+      rotateZ(var(--portrait-rotation))
+      rotateX(var(--portrait-tilt-x, 0deg))
+      rotateY(var(--portrait-tilt-y, 0deg));
+  }
+
+  .portrait[data-tilting="true"] { will-change: transform; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .workButton { transition: none; }
+  .workButton:hover, .workButton:active { transform: none; }
+}
